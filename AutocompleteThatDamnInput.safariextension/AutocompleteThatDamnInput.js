@@ -2,14 +2,14 @@ function AutocompleteThatDamnInput (input) {
 	input.removeAttribute('autocomplete');
 }
 
-function AutocompleteAllDamnInputs () {
+function AutocompletePresentInputs () {
 	var inputs = document.getElementsByTagName("input");
-	for ( input in inputs ) {
-		AutocompleteThatDamnInput(input);
+	for ( idx = 0; idx < inputs.length; idx++ ) {
+		AutocompleteThatDamnInput(inputs.item(idx));
 	}
 }
 
-function AutocompleteAllDamnInputs () {
+function AutocompleteFutureInputs () {
 	document.addEventListener("DOMNodeInsertedIntoDocument", function(event) {
 		var node = event.target;
 		if ( node.nodeName == "INPUT" ) {
@@ -18,4 +18,5 @@ function AutocompleteAllDamnInputs () {
 	}, true);
 }
 
-AutocompleteAllDamnInputs();
+AutocompletePresentInputs();
+AutocompleteFutureInputs();
